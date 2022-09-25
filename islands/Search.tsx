@@ -40,10 +40,10 @@ const IndexPage = () => {
       <br/><br/>
       <h2 className={tw`text-xl mt-10`}>فهرس على الخط خاص بمحتوى مكتبة كلية العلوم الانسانية والاجتماعية بسكرة </h2>
       <h3 className={tw`text-lg mt-5 mb-10`}>من طرف الطالب <strong>منصف قحة</strong>(ماستر علم مكتبات)</h3>
-      <span className={tw`xs:text-sm bg-green-100 py-4 px-5 rounded-md text-md`}>يجب ان تكون عبارة البحث اكثر من حرفين ليبدئ البحث, يقوم هاذا الفهرس بالبحث في حقلي العنوان واسم الكاتب اظافة الى رقم التصنيف</span><br/><br/>
-      <input type="text" id="q" placeholder="ادخل عبارة البحث ثم اضغط Enter" className={tw`px-4 py-3 text-right w-3/6 xs:w-full border border-gray-200 `} onInput={searchHandle}/>
+      <div className={tw`text-sm bg-green-100 py-4 px-5 rounded-md md:text-lg m-auto md:w-4/6`}>يجب ان تكون عبارة البحث اكثر من حرفين ليبدئ البحث, يقوم هاذا الفهرس بالبحث في حقلي العنوان واسم الكاتب اظافة الى رقم التصنيف</div><br/><br/>
+      <input type="text" id="q" placeholder="ادخل عبارة البحث ثم اضغط Enter" className={tw`px-4 py-3 text-right md:w-3/6 w-full border border-gray-200 `} onInput={searchHandle}/>
       <p className={tw`pt-3 pb-5`}>{ searchResultMessage }</p>
-      <div className={tw`grid grid-cols-3 xs:grid-cols-2 gap-6 w-3/6 xs:w-full m-auto `}>
+      <div className={tw`grid md:grid-cols-3 grid-cols-2 gap-11 w-3/6 w-full m-auto `}>
       <span>
           <label htmlFor="li">علم مكتبات</label>
           <input type="radio" name="db" value="li" id='li' onChange={searchHandle} />
@@ -80,9 +80,9 @@ const IndexPage = () => {
               <th className={tw`px-2 py-1.5`}>المعرف</th>
               <th className={tw`px-2 py-1.5`}>العنوان</th>
               <th className={tw`px-2 py-1.5`}>الكاتب</th>
-              <th className={tw`xs:hidden px-2 py-1.5`}>دار النشر</th>
-              <th className={tw`xs:hidden px-2 py-1.5`}>سنة النشر</th>
-              <th className={tw`xs:hidden px-2 py-1.5`}>الدولة</th>
+              <th className={tw`hidden md:inline px-2 py-1.5`}>دار النشر</th>
+              <th className={tw`hidden md:inline px-2 py-1.5`}>سنة النشر</th>
+              <th className={tw`hidden md:inline px-2 py-1.5`}>الدولة</th>
             </tr>
           </thead>
           <tbody>
@@ -92,9 +92,9 @@ const IndexPage = () => {
                 <td className={tw`px-2 py-1.5 border-r border-gray-100`}>{book.ID}</td>
                 <td className={tw`px-2 py-1.5 border-r border-gray-100`}>{book.title}</td>
                 <td className={tw`px-2 py-1.5 border-r border-gray-100`}>{book.author}</td>
-                <td className={tw`xs:hidden px-2 py-1.5 border-r border-gray-100`}>{book.publisher}</td>
-                <td className={tw`xs:hidden px-2 py-1.5 border-r border-gray-100`}>{book.publishYear}</td>
-                <td className={tw`xs:hidden px-2 py-1.5 border-r border-gray-100`}>{book.country}</td>
+                <td className={tw`hidden md:inline px-2 py-1.5 border-r border-gray-100`}>{book.publisher}</td>
+                <td className={tw`hidden md:inline px-2 py-1.5 border-r border-gray-100`}>{book.publishYear}</td>
+                <td className={tw`hidden md:inline px-2 py-1.5 border-r border-gray-100`}>{book.country}</td>
               </tr>
               })
             }
