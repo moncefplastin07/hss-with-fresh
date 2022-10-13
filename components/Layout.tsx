@@ -15,9 +15,11 @@ const Layout = ({ children, title = 'This is the default title' }) => (
     <div className={tw`text-center`}>
       {children}
     </div>
-    <footer className={tw`text-center mt-5`}>
+    <footer className={tw`text-center mt-5`}>   
       <hr />
-      <span>مرحبا 👋</span>
+      <span>
+        آخر تحديث بتاريخ: 2022-10-13
+      </span>
     </footer>
   </div>
 )
