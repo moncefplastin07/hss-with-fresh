@@ -38,6 +38,7 @@ const IndexPage = () => {
   return (
     <Layout title="الفهرس المتاح على الخط - علوم انسانية واجتماعية - شتمة بسكرة">
       <br/><br/>
+      
       <h2 className={tw`text-xl mt-10`}>فهرس على الخط خاص بمحتوى مكتبة كلية العلوم الانسانية والاجتماعية بسكرة </h2>
       <h3 className={tw`text-lg mt-5 mb-10`}>من طرف الطالب <strong>منصف قحة</strong>(ماستر علم مكتبات)</h3>
       <div className={tw`text-sm bg-green-100 py-4 px-5 rounded-md md:text-lg m-auto md:w-4/6`}>يجب ان تكون عبارة البحث اكثر من حرفين ليبدئ البحث, يقوم هاذا الفهرس بالبحث في حقلي العنوان واسم الكاتب اظافة الى رقم التصنيف</div><br/><br/>
@@ -73,34 +74,55 @@ const IndexPage = () => {
           <input type="radio" name="db" value="fl" id='fl' onChange={searchHandle}/>
         </span>
       </div>
+      <div className={tw`m-auto w-full md:w-1/2	`}>
      { searchResult.length > 0 ?  <div className={tw`xl:p-10 text-right`}>
-        <table dir="rtl" className={tw`m-auto `}>
-          <thead>
-            <tr className={tw`font-mono`}>
-              <th className={tw`px-2 py-1.5`}>المعرف</th>
-              <th className={tw`px-2 py-1.5`}>العنوان</th>
-              <th className={tw`px-2 py-1.5`}>الكاتب</th>
-              <th className={tw`hidden md:inline px-2 py-1.5`}>دار النشر</th>
-              <th className={tw`hidden md:inline px-2 py-1.5`}>سنة النشر</th>
-              <th className={tw`hidden md:inline px-2 py-1.5`}>الدولة</th>
-            </tr>
-          </thead>
-          <tbody>
+      
+        
             {
               searchResult.map((book:any, index)=>{
-                return <tr className={tw(index % 2 == 0 ? "bg-gray-50" : '')}>
-                <td className={tw`px-2 py-1.5 border-r border-gray-100`}>{book.ID}</td>
-                <td className={tw`px-2 py-1.5 border-r border-gray-100`}>{book.title}</td>
-                <td className={tw`px-2 py-1.5 border-r border-gray-100`}>{book.author}</td>
-                <td className={tw`hidden md:inline px-2 py-1.5 border-r border-gray-100`}>{book.publisher}</td>
-                <td className={tw`hidden md:inline px-2 py-1.5 border-r border-gray-100`}>{book.publishYear}</td>
-                <td className={tw`hidden md:inline px-2 py-1.5 border-r border-gray-100`}>{book.country}</td>
-              </tr>
+                return (
+                  <div className={tw`p-5 bg-gray-100 my-5 rounded-md`} dir="rtl">
+                    <h1 className={tw`text-2xl`}>{book.title}</h1>
+                    <h3 className={tw`text-lg`}>{book.subtitle}</h3>
+                    <div className={tw`flex gap-6 my-5`}>
+                      <table>
+                        <tr>
+                          <td><b>المؤلف: </b></td><td>{book.author}</td>
+                        </tr>
+                        <tr>
+                          <td><b>الناشر: </b></td><td>{book.publisher}</td>
+                        </tr>
+                        <tr>
+                          <td><b>مكان النشر: </b></td><td>{book.country}</td>
+                        </tr>
+                        <tr>
+                          <td><b>سنة النشر: </b></td><td>{book.publishYear}</td>
+                        </tr>
+                      </table>
+                      <table>
+                        <tr>
+                          <td><b>عدد الصفحات: </b></td><td>{book.pages}</td>
+                        </tr>
+                        <tr>
+                          <td><b>الكلمات المفتاحية: </b></td><td>{book.keywords}</td>
+                        </tr>
+                        <tr>
+                          <td><b>رمز التصنيف: </b></td><td>{book.ID}</td>
+                        </tr>
+                        
+                      </table>
+                    </div>
+                    <b>المحتوى:</b>
+                    <p className={tw`whitespace-pre-line`}>{book.notecontent}</p>
+                    <p className={tw`text-center`}>رمز التصنيف: <b className={tw`text-2xl`}>{book.ID}</b></p>
+                  </div>
+                )
               })
             }
-          </tbody>
-        </table>
+          
+          
       </div> : ''}
+      </div>
     </Layout>
 )}
 
