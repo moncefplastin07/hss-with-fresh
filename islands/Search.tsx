@@ -2,9 +2,6 @@
 import { h } from "preact";
 import { useState } from "preact/hooks";
 import { tw } from "@twind";
-
-
-
 import Layout from '../components/Layout.tsx'
 
 const IndexPage = () => {
@@ -90,7 +87,7 @@ const IndexPage = () => {
                     <div className={tw`md:flex md:gap-6 my-5`}>
                       <table className={tw`w-full md:w-1/2`}>
                         <tr>
-                          <td><b>المؤلف: </b></td><td>{book.author}</td>
+                          <td><b>المؤلف: </b></td><td dangerouslySetInnerHTML={{__html:book.author?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:yellow>$1</b>")}}></td>
                         </tr>
                         <tr>
                           <td><b>الناشر: </b></td><td>{book.publisher}</td>
@@ -107,7 +104,7 @@ const IndexPage = () => {
                           <td><b>عدد الصفحات: </b></td><td>{book.pages}</td>
                         </tr>
                         <tr>
-                          <td><b>الكلمات المفتاحية: </b></td><td>{book.keywords}</td>
+                          <td><b>الكلمات المفتاحية: </b></td><td dangerouslySetInnerHTML={{__html:book.keywords?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:yellow>$1</b>")}}></td>
                         </tr>
                         <tr>
                           <td><b>رمز التصنيف: </b></td><td>{book.ID}</td>
