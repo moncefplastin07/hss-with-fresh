@@ -82,12 +82,12 @@ const IndexPage = () => {
               searchResult.map((book:any, index)=>{
                 return (
                   <div className={tw`p-5 bg-gray-100 my-5 rounded-md`} dir="rtl">
-                    <h1 className={tw`text-2xl`} dangerouslySetInnerHTML={{__html:book.title?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:rgb(255 255 0 / 70%)>$1</b>")}}></h1>
+                    <h1 className={tw`text-2xl`} dangerouslySetInnerHTML={{__html:book.title?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), '<b style="background:rgb(255 255 0 / 70%)">$1</b>')}}></h1>
                     <h3 className={tw`text-lg`} dangerouslySetInnerHTML={{__html:book.subtitle?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), '<b style="background:rgb(255 255 0 / 70%)">$1</b>')}}></h3>
                     <div className={tw`md:flex md:gap-6 my-5`}>
                       <table className={tw`w-full md:w-1/2`}>
                         <tr>
-                          <td><b>المؤلف: </b></td><td dangerouslySetInnerHTML={{__html:book.author?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:rgb(255 255 0 / 70%)>$1</b>")}}></td>
+                          <td><b>المؤلف: </b></td><td dangerouslySetInnerHTML={{__html:book.author?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), '<b style="background:rgb(255 255 0 / 70%)">$1</b>')}}></td>
                         </tr>
                         <tr>
                           <td><b>الناشر: </b></td><td>{book.publisher}</td>
@@ -104,7 +104,7 @@ const IndexPage = () => {
                           <td><b>عدد الصفحات: </b></td><td>{book.pages}</td>
                         </tr>
                         <tr>
-                          <td><b>الكلمات المفتاحية: </b></td><td dangerouslySetInnerHTML={{__html:book.keywords?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:rgb(255 255 0 / 70%)>$1</b>")}}></td>
+                          <td><b>الكلمات المفتاحية: </b></td><td dangerouslySetInnerHTML={{__html:book.keywords?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), '<b style="background:rgb(255 255 0 / 70%)">$1</b>')}}></td>
                         </tr>
                         <tr>
                           <td><b>رمز التصنيف: </b></td><td>{book.ID}</td>
@@ -113,7 +113,7 @@ const IndexPage = () => {
                       </table>
                     </div>
                     <b>المحتوى:</b>
-                    <p className={tw`whitespace-pre-line`} dangerouslySetInnerHTML={{__html:book.notecontent?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:rgb(255 255 0 / 70%)>$1</b>")}}></p>
+                    <p className={tw`whitespace-pre-line`} dangerouslySetInnerHTML={{__html:book.notecontent?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), '<b style="background:rgb(255 255 0 / 70%)">$1</b>')}}></p>
                     <p className={tw`text-center`}>رمز التصنيف: <b className={tw`text-2xl`}>{book.ID}</b></p>
                   </div>
                 )
