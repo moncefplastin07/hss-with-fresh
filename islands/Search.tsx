@@ -82,8 +82,8 @@ const IndexPage = () => {
               searchResult.map((book:any, index)=>{
                 return (
                   <div className={tw`p-5 bg-gray-100 my-5 rounded-md`} dir="rtl">
-                    <h1 className={tw`text-2xl`}>{book.title}</h1>
-                    <h3 className={tw`text-lg`}>{book.subtitle}</h3>
+                    <h1 className={tw`text-2xl`} dangerouslySetInnerHTML={{__html:book.title?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:yellow>$1</b>")}}></h1>
+                    <h3 className={tw`text-lg`} dangerouslySetInnerHTML={{__html:book.subtitle?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:yellow>$1</b>")}}></h3>
                     <div className={tw`md:flex md:gap-6 my-5`}>
                       <table className={tw`w-full md:w-1/2`}>
                         <tr>
