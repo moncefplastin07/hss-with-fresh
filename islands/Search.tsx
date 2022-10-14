@@ -9,6 +9,7 @@ import Layout from '../components/Layout.tsx'
 
 const IndexPage = () => {
   const [searchResultMessage, setSearchResultMessage] = useState('')
+  const [keywords, setKeywords] = useState([])
   const [searchResult, setSearchResult] = useState([])
   const searchResponse = async (query: string, db = '') => {
     setSearchResultMessage("جار البحث ..")
@@ -19,7 +20,9 @@ const IndexPage = () => {
     const db = (document.querySelector('input[name="db"]:checked') as HTMLInputElement).value
     if (query.length > 2) {
       
-      const searchResult = await searchResponse(query, db)  
+      const {keywords, searchResult} = await searchResponse(query, db)  
+      setKeywords(keywords)
+      console.log()
      
       if (searchResult.length < 1) {
         setSearchResultMessage("لا توجد نتائج بحث مطابقة")
@@ -113,7 +116,7 @@ const IndexPage = () => {
                       </table>
                     </div>
                     <b>المحتوى:</b>
-                    <p className={tw`whitespace-pre-line`}>{book.notecontent}</p>
+                    <p className={tw`whitespace-pre-line`} dangerouslySetInnerHTML={{__html:book.notecontent?.replace(new RegExp(`(${keywords.join("|")})`, "ig"), "<b style=background:yellow>$1</b>")}}></p>
                     <p className={tw`text-center`}>رمز التصنيف: <b className={tw`text-2xl`}>{book.ID}</b></p>
                   </div>
                 )
