@@ -8,6 +8,7 @@ const IndexPage = () => {
   const [searchResultMessage, setSearchResultMessage] = useState('')
   const [keywords, setKeywords] = useState([])
   const [searchResult, setSearchResult] = useState([])
+  const [_DB, set_DB] = useState('')
   const searchResponse = async (query: string, db = '') => {
     setSearchResultMessage("جار البحث ..")
     return await (await fetch(`https://moncefplastin07-hss.deno.dev/?q=${query}&dbs=${db}`)).json()
@@ -15,6 +16,7 @@ const IndexPage = () => {
   const searchHandle = async () => {
     const query = (document.getElementById("q") as HTMLInputElement).value 
     const db = (document.querySelector('input[name="db"]:checked') as HTMLInputElement).value
+    set_DB(db)
     if (query.length > 2) {
       
       const {keywords, searchResult} = await searchResponse(query, db)  
@@ -84,6 +86,11 @@ const IndexPage = () => {
       </div>
       <div className={tw`m-auto w-full md:w-1/2	`}>
      { searchResult.length > 0 ?  <div className={tw`xl:p-10 text-right`}>
+      {
+        _DB == "ma" || _DB == "th" ? (<div className={tw`text-sm bg-green-100 py-4 px-5 rounded-md md:text-lg m-auto`}>
+          <b>ملاحظة: </b>مذكرات الماستر ورسائل الماجيستير والدكتوراه لا يمكن استعارتها لكن يمكن الاطلاع عليها ورقيا للمطالعة او التصوير في الطابق الاول في قاعة المطالعة 
+        </div>) : ""
+      }
       
         
             {
