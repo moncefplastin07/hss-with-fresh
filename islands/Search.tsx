@@ -58,8 +58,8 @@ const IndexPage = () => {
           <input type="radio" name="db" value="co" id='co' onChange={searchHandle} />
         </span>
         <span>
-          <label htmlFor="th">ثقافة عامة</label>
-          <input type="radio" name="db" value="th" id='th' onChange={searchHandle} />
+          <label htmlFor="ca">ثقافة عامة</label>
+          <input type="radio" name="db" value="ca" id='ca' onChange={searchHandle} />
         </span>
         <span>
           <label htmlFor="so">علم الاجتماع</label>
@@ -68,6 +68,14 @@ const IndexPage = () => {
         <span>
           <label htmlFor="pc">علم النفس</label>
           <input type="radio" name="db" value="pc" id="pc" onChange={searchHandle}/>
+        </span>
+        <span>
+          <label htmlFor="th">ماجيستير & دكتوراه</label>
+          <input type="radio" name="db" value="th" id='th' onChange={searchHandle}/>
+        </span>
+        <span>
+          <label htmlFor="ma">مذكرات الماستر</label>
+          <input type="radio" name="db" value="ma" id='ma' onChange={searchHandle}/>
         </span>
         <span>
           <label htmlFor="fl">لغات اجنبية (فرنسية فقط)</label>
